@@ -23,6 +23,7 @@ func main() {
 		logoru.Critical(err.Error())
 	}
 
+	// Begin gotextfsm template
 	template := `Value bgpAsPath (\d+\s*.*?)
 Value bgpIpv4Prefix (\d+\.\d+\.\d+\.\d+)
 Value bgpIpv4NextHop (\d+\.\d+\.\d+\.\d+)
@@ -39,6 +40,7 @@ Start
 	^\s+${bgpIpv4NextHop} from
 	^\s+Origin
 `
+	// End gotextfsm template
 
 	// Use textfsm to read the bgp table...
 	fsm := gotextfsm.TextFSM{}
