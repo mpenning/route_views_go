@@ -29,3 +29,17 @@ defer client.Close()
 ```
 
 - This is only for an example.  If you only want bgp bestpath for an IP, you don't really need to use `goph`, you can get the same information much faster by using [iptoasn](https://github.com/jamesog/iptoasn/).
+
+# Build and Usage
+
+- Run `make all`
+- Run `./routeviews_go`
+
+`routeviews_go` will ssh into the router and dump the dictionary of parsed values to `stdout`.
+
+```
+$ ./routeviews_go
+2023-10-07 15:56:37.920 |  INFO    | map[bgpAsPath:3356 bgpIpv4NextHop:4.68.4.46 bgpIpv4Prefix:4.0.0.0 bgpPrefixLength:9 bgpTableVersion:154410995]
+
+$
+```
