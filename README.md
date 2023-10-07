@@ -28,14 +28,14 @@ if err != nil {
 defer client.Close()
 ```
 
-- This is only for an example.  If you only want bgp bestpath for an IP, you don't really need to use `goph`, you can get the same information much faster by using [iptoasn](https://github.com/jamesog/iptoasn/).
+- This is only an example.  If you only want bgp bestpath for an IP, you don't really need to use [goph](https://github.com/melbahja/goph/), you can get the same information simpler by using [iptoasn](https://github.com/jamesog/iptoasn/).
 
 # Build and Usage
 
 - Run `make all`
 - Run `./routeviews_go`
 
-`routeviews_go` will ssh into the router and dump the dictionary of parsed values to `stdout`.
+`routeviews_go` will ssh into the router, parse output with [gotextfsm](https://github.com/sirikothe/gotextfsm/), and dump the dictionary of parsed values to `stdout`.
 
 ```
 $ ./routeviews_go
@@ -43,3 +43,15 @@ $ ./routeviews_go
 
 $
 ```
+
+# Dependencies
+
+- [goph](https://github.com/melbahja/goph/)
+- [gotextfsm](https://github.com/sirikothe/gotextfsm/)
+- [logoru](https://github.com/gleich/logoru/)
+
+# FAQ
+
+- Q: Why not use [go-ansible](https://github.com/apenella/go-ansible)?  A: This repo is simpler for my use-case.
+- Q: Is [goph](https://github.com/melbahja/goph) faster than [python Ansible](https://github.com/ansible/ansible)?  A: Yes, pure-Go is worth it; on my system, ssh to the router and parsing output takes less than 2.0 seconds.
+
