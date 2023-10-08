@@ -54,4 +54,5 @@ $
 
 - Q: Why not use [go-ansible](https://github.com/apenella/go-ansible)?  A: This repo is simpler for my use-case.
 - Q: Is [goph](https://github.com/melbahja/goph) faster than [python Ansible](https://github.com/ansible/ansible)?  A: I think it's debatable; most of the run-time is waiting on `ssh` / `route-views` itself, and that is a significant portion of either runtime.  That said, I like the portability of the Go runtime-build-system more than `python` / `ansible`; Go builds static-linked binaries for the CPU target.
+- Q: Is [goph](https://github.com/melbahja/goph) a replacement for [goexpect](https://github.com/google/goexpect/)?  A: No.
 
