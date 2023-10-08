@@ -11,14 +11,14 @@ import (
 func main() {
 
 	// route-views username 'rviews' with no password
-	client, err := goph.New("rviews", "route-views.routeviews.org", goph.Password(""))
+	client01, err := goph.New("rviews", "route-views.routeviews.org", goph.Password(""))
 	if err != nil {
 		logoru.Critical(err.Error())
 	}
-	defer client.Close()
+	defer client01.Close()
 
 	// get the best BGP route info for 4.2.2.2
-	cmdout, err := client.Run(fmt.Sprintf("show ip bgp %s bestpath", "4.2.2.2"))
+	cmdout01, err := client01.Run(fmt.Sprintf("show ip bgp %s bestpath", "4.2.2.2"))
 	if err != nil {
 		logoru.Critical(err.Error())
 	}
@@ -49,21 +49,24 @@ Start
 		logoru.Critical(err)
 	}
 	parser := gotextfsm.ParserOutput{}
-	err = parser.ParseTextString(string(cmdout), fsm, true)
+
+	/////////////////////////////////////////////////////////////
+	// parse cmdout01
+	err = parser.ParseTextString(string(cmdout01), fsm, true)
 	if err != nil {
 		logoru.Critical(err)
 	}
 
 	// populate a map called 'output'...
-	output := make(map[string]string)
+	output01 := make(map[string]string)
 	for _, record := range parser.Dict {
 		for key, value := range record {
 			switch value.(type) {
 			case string:
-				output[key] = value.(string)
+				output01[key] = value.(string)
 			}
 		}
 	}
-	logoru.Info(output)
+	logoru.Info(output01)
 
 }
