@@ -2,7 +2,7 @@
 
 # Overview
 
-- Use [goph](https://github.com/melbahja/goph/) to SSH into a Cisco BGP router, run `show ip bgp 4.2.2.2 bestpath`, and parse fields from the IPv4 BGP bestpath entry similar to the one shown below:
+- Use [`goph`](https://github.com/melbahja/goph/) to SSH into a Cisco BGP router, run `show ip bgp 4.2.2.2 bestpath`, and parse fields from the IPv4 BGP bestpath entry similar to the one shown below:
 
 ```
 BGP routing table entry for 4.0.0.0/9, version 154410995
